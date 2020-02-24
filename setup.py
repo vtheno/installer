@@ -3,10 +3,13 @@ import sys
 import os
 from pathlib import Path
 from subprocess import call
+from distutils.util import get_platform
+exe_suffix = 'win' in get_platform() and '.exe' or ''
 dir = Path(__file__).parent.absolute()
 os.chdir(str(dir))
 call([sys.executable, 'actual_setup.py', 'install'])
-call([sys.executable, 'install_binary.py'])
+# call([sys.executable, 'install_binary.py'])
+call(['install_binary.py'])
 
 version = 0.1
 readme = ''
