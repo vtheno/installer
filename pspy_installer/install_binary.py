@@ -104,7 +104,18 @@ def get_binary():
 
     matcher = re.compile('\S+' + re.escape(plat_name))
     tmplt = {'browser_download_url': matcher}
-    each = next(gq(tmplt, data))
+    try:
+        each = next(gq(tmplt, data))
+    except StopIteration:
+        import sys
+        print(
+            "It seems that binaries for your platform is not available.\n"
+            "Following way must work, but can be quite time-consuming:\n"
+            "Firstly, Install Haskell Stack Build Tool: https://docs.haskellstack.org/en/stable/README/\n"
+            "Second, Clone https://github.com/purescript-python/purescript-python, then do `stack install .`"
+        )
+        sys.exit(1)
+
     url = each['browser_download_url']
     zf = zipfile.ZipFile(io.BytesIO(requests.get(url).content))
     exe = "pspy-blueprint"
