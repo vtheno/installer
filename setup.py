@@ -19,9 +19,7 @@ setup(
     author='thautawarm',
     author_email='twshere@outlook.com',
     packages=find_packages(),
-    entry_points={
-        "console_scripts": ['pspy-blueprint=pspy_proxy.proxy:main']
-    },
+    entry_points={"console_scripts": ['pspy-blueprint=pspy_proxy.proxy:main']},
     # above option specifies what commands to install,
     # e.g: entry_points={"console_scripts": ["yapypy=yapypy.cmd:compiler"]}
     install_requires=['purescripto>=0.7.3', 'requests'],  # dependencies
@@ -37,4 +35,5 @@ setup(
     zip_safe=False,
 )
 
+print("Installing binaries...")
 call([sys.executable, str(Path(__file__).parent / "install_binary.py")])

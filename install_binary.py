@@ -126,5 +126,4 @@ def get_binary():
     make_executable(str(out_path / exe))
 
 
-if __name__ == '__main__':
-    get_binary()
+get_binary()
