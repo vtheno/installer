@@ -9,3 +9,5 @@ npm install -g purescript
 npm install -g spago
 pip install git+https://github.com/purescript-python/installer
 ```
+
+NOTE: installing this package sometimes takes a long time, because we will download  the binary files and invoke 2 `setup.py install`.
