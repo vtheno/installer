@@ -1,7 +1,7 @@
 from pathlib import Path
 from subprocess import call
+from pspy_installer.common import out_path
 import sys
-out_path = Path('~/.local/bin').expanduser()
 
 
 def main():

@@ -4,11 +4,11 @@ import os
 import requests
 import zipfile
 import stat
-from pathlib import Path
+from pspy_installer.common import out_path
 from distutils.util import get_platform
 
 tag = re.compile('refs/tags/v(\S+)')
-out_path = Path('~/.local/bin').expanduser()
+
 
 
 def make_executable(cmd_path):
