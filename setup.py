@@ -1,15 +1,12 @@
-from setuptools import setup, find_packages
+from setuptools import setup
 import sys
 import os
 from pathlib import Path
 from subprocess import call
-from distutils.util import get_platform
-exe_suffix = 'win' in get_platform() and '.exe' or ''
 dir = Path(__file__).parent.absolute()
 os.chdir(str(dir))
 call([sys.executable, 'actual_setup.py', 'install'])
-# call([sys.executable, 'install_binary.py'])
-call(['install_binary.py'])
+call([sys.executable, 'install_binary.py'])
 
 version = 0.1
 readme = ''
@@ -28,6 +25,12 @@ setup(
     author_email='twshere@outlook.com',
     packages=['pspy_placeholder'],
     install_requires=[],
+    package_data={
+        'pspy_placeholder': [
+            each.name for each in Path('pspy_placeholder').iterdir()
+            if each.name.startswith('pspy')
+        ]
+    },
     platforms="any",
     classifiers=[
         "Programming Language :: Python :: 3.5",

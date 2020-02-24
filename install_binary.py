@@ -4,7 +4,7 @@ import os
 import requests
 import zipfile
 import stat
-from pspy_proxy.common import out_path
+from pspy_placeholder import out_path
 from distutils.util import get_platform
 
 tag = re.compile('refs/tags/v(\S+)')

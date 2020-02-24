@@ -1,5 +1,5 @@
 from subprocess import call
-from pspy_proxy.common import out_path
+from pspy_placeholder import out_path
 import sys
 
 
