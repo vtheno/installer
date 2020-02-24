@@ -4,4 +4,4 @@ import sys
 
 
 def main():
-    call([str((out_path / "pspy-blueprint").absolute()), *sys.argv])
+    call([str((out_path / "pspy-blueprint").absolute()), *sys.argv[1:]])
