@@ -4,11 +4,10 @@ import os
 import requests
 import zipfile
 import stat
-from pspy_installer.common import out_path
+from pspy_proxy.common import out_path
 from distutils.util import get_platform
 
 tag = re.compile('refs/tags/v(\S+)')
-
 
 
 def make_executable(cmd_path):
@@ -125,3 +124,7 @@ def get_binary():
     out_path.mkdir(exist_ok=True, parents=True)
     zf.extract(exe, path=str(out_path))
     make_executable(str(out_path / exe))
+
+
+if __name__ == '__main__':
+    get_binary()

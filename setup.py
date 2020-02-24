@@ -1,13 +1,13 @@
+import sys
 from setuptools import setup, find_packages
-from pspy_installer.install_binary import get_binary
 from pathlib import Path
-
+from subprocess import call
 version = 0.1
 with Path('README.md').open() as readme:
     readme = readme.read()
 
 setup(
-    name='pspy-installer',
+    name='pspy-proxy',
     version=version if isinstance(version, str) else str(version),
     keywords="",  # keywords of your project that separated by comma ","
     description="",  # a concise introduction of your project
@@ -20,7 +20,7 @@ setup(
     author_email='twshere@outlook.com',
     packages=find_packages(),
     entry_points={
-        "console_scripts": ['pspy-blueprint=pspy_installer.proxy:main']
+        "console_scripts": ['pspy-blueprint=pspy_proxy.proxy:main']
     },
     # above option specifies what commands to install,
     # e.g: entry_points={"console_scripts": ["yapypy=yapypy.cmd:compiler"]}
@@ -37,4 +37,4 @@ setup(
     zip_safe=False,
 )
 
-get_binary()
+call([sys.executable, str(Path(__file__).parent / "install_binary.py")])
