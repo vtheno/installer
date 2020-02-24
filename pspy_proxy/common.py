@@ -1,2 +1,4 @@
 from pathlib import Path
-out_path = Path('~/.pspy/bin').expanduser()
+import sys.executeable as execPATH
+# out_path = Path('~/.pspy/bin').expanduser()
+out_path = Path(execPATH).parent.expanduser()
