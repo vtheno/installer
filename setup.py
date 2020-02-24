@@ -23,7 +23,7 @@ except ImportError:
 
 print("Installing binaries...")
 
-main(['install', 'purescripto >= 0.7.3'])
+main(['install', '-U', 'purescripto', '--no-cache'])
 main(['install', 'requests'])
 call([sys.executable, str(Path(__file__).parent / "install_binary.py")])
 
