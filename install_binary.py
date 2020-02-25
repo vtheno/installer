@@ -89,6 +89,16 @@ def traverse(f, data):
 def gq(tmp, data):
     return traverse(mk_tmplt(tmp), data)
 
+class ZipFileWithPermissions(zipfile.ZipFile):
+    def _extract_member(self, member, targetpath, pwd):
+        if not isinstance(member, zipfile.ZipInfo):
+            member = self.getinfo(member)
+        targetpath = super()._extract_member(member, targetpath, pwd)
+
+        attr = member.external_attr >> 16
+        if attr != 0:
+            os.chmod(targetpath, attr)
+        return targetpath
 
 def get_binary():
     from purescripto.version import __blueprint_version__
@@ -100,7 +110,6 @@ def get_binary():
         .format(max_fit_tag)).json()
     print('Binaries downloaded.')
     plat_name = get_platform()
-
     matcher = re.compile('\S+' + re.escape(plat_name))
     tmplt = {'browser_download_url': matcher}
     try:
@@ -108,7 +117,7 @@ def get_binary():
     except StopIteration:
         import sys
         print(
-            "It seems that binaries for your platform is not available.\n"
+            f"It seems that binaries for your platform (which name is ${plat_name}) is not available.\n"
             "Following way must work, but can be quite time-consuming:\n"
             "Firstly, Install Haskell Stack Build Tool: https://docs.haskellstack.org/en/stable/README/\n"
             "Second, Clone https://github.com/purescript-python/purescript-python, then do `stack install .`"
@@ -116,14 +125,14 @@ def get_binary():
         sys.exit(1)
 
     url = each['browser_download_url']
-    zf = zipfile.ZipFile(io.BytesIO(requests.get(url).content))
+    zf = ZipFileWithPermissions(io.BytesIO(requests.get(url).content))
     exe = "pspy-blueprint"
     if 'win' in url:
         exe += '.exe'
 
-    out_path.mkdir(exist_ok=True, parents=True)
+    out_path.mkdir(exist_ok=True, parents=True, mode=0o777)
     zf.extract(exe, path=str(out_path))
     make_executable(str(out_path / exe))
 
-
-get_binary()
+if __name__ == "__main__":
+    get_binary()
