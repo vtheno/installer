@@ -11,10 +11,8 @@ tag = re.compile('refs/tags/v(\S+)')
 
 
 def make_executable(cmd_path):
-    if os.lstat(cmd_path).st_mode & stat.S_IEXEC:
-        pass
-    else:
-        os.chmod(cmd_path, stat.S_IEXEC)
+    # always modify mode to READ + EXEC
+    os.chmod(cmd_path, stat.S_IREAD | stat.S_IEXEC)
 
 
 def show_tags(url=r"https://github.com/purescript-python/purescript-python"):
