@@ -25,3 +25,17 @@ pip install git+https://github.com/purescript-python/installer
 ```
 
 NOTE: installing this package sometimes takes a long time, because we will download  the binary files and invoke 2 `setup.py install`.
+
+
+### Install the Latest(Important)
+
+```
+pip uninstall pspy-placeholder pspy-proxy -y && pip install git+https://github.com/purescript-python/installer
+```
+
+
+## Contributing
+
+Working on distributing [pspy-blueprint](https://github.com/purescript-python/purescript-python/releases) binaries with corresponding [purescripto](https://github.com/purescript-python/purescripto) Python package.
+
+The correspondences are given at [version.py](https://github.com/purescript-python/purescripto/blob/master/purescripto/version.py).
