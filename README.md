@@ -2,8 +2,8 @@
 
 ## One-liner Installation
 
-- `bash -c "$(curl -fsSL https://raw.githubusercontent.com/purescript-python/installer/master/install.sh)"`
-- or `bash -c "$(wget -O- https://raw.githubusercontent.com/purescript-python/installer/master/install.sh)"`
+- `curl -fsSL https://raw.githubusercontent.com/purescript-python/installer/master/install.sh | bash`
+- or `wget -O- https://raw.githubusercontent.com/purescript-python/installer/master/install.sh | bash`
 
 `bash` can be also other shells.
 
@@ -25,10 +25,10 @@ NOTE: `virtualenv` comes with `pip` and `setuptools` prepackaged.
 2. `npm install -g purescript` and `npm install -g spago`.
 3. Use `pip` and install repo.
 
-```
+```bash
 npm install -g purescript
 npm install -g spago
-pip install git+https://github.com/purescript-python/installer
+curl -fsSL https://raw.githubusercontent.com/purescript-python/installer/master/install.sh | bash
 ```
 
 NOTE: installing this package sometimes takes a long time, because we will download  the binary files and invoke 2 `setup.py install`.
@@ -36,8 +36,9 @@ NOTE: installing this package sometimes takes a long time, because we will downl
 
 ### Install the Latest(Important)
 
-```
-pip uninstall pspy-placeholder pspy-proxy -y && pip install git+https://github.com/purescript-python/installer
+```bash
+pip install -U purescripto
+curl -fsSL https://raw.githubusercontent.com/purescript-python/installer/master/install.sh | bash
 ```
 
 
