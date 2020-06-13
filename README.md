@@ -1,5 +1,12 @@
 ## Installer for PureScript Python
 
+## One-liner Installation
+
+- `bash -c "$(curl -fsSL https://raw.githubusercontent.com/purescript-python/installer/master/install.sh)"`
+- or `bash -c "$(wget -O- https://raw.githubusercontent.com/purescript-python/installer/master/install.sh)"`
+
+`bash` can be also other shells.
+
 ### Prerequisites
 You must install the following packages on your system prior to running the main installation steps  
 - Python 3.5 or greater - (https://www.python.org/downloads/)
