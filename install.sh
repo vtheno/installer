@@ -7,7 +7,7 @@ then
     exit 1
 fi
 
-[ ! -x "$(command -v pspy)" ] && pip install -U --no-cache purescripto -y
+[ ! -x "$(command -v pspy)" ] && pip install -U --no-cache purescripto
 
 td="`mktemp -d`"
 
